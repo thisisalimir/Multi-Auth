@@ -49,9 +49,9 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
-                @if (Auth::guard('web_seller')->guest())
+                @if (Auth::guard('web_admin')->guest())
 
-                    <!--Seller Login and registration Links -->
+                    <!--Admin Login and registration Links -->
 
                         <li><a href="{{ url('/admin_login') }}">Admin Login</a></li>
                         <li><a href="{{ url('/admin_register') }}">Admin Registration</a></li>

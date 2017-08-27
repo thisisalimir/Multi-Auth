@@ -1,4 +1,4 @@
-@extends('admin.layouts')
+@extends('admin.layout')
 
 @section('content')
         <div class="container">
@@ -63,7 +63,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-success">
-                                        Register Seller
+                                        Register Admin
                                     </button>
                                 </div>
                             </div>

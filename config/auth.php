@@ -40,7 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        //Our New custom Driver
+        'web_admin' => [
+            'driver' => 'session',
+            'provider' => 'admins'
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -68,6 +72,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        //Admin User Provider
+        'admins' => [
+            'driver' => 'eloquent', //we using Eloquent Model
+            'model' => App\Admin::class,
         ],
 
         // 'users' => [

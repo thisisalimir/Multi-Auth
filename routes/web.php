@@ -14,7 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+//Laravel Auth Routes
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Admin Routes
+Route::get('admin_register','AdminAuth\RegisterController@showRegistrationForm');
+Route::post('admin_register','AdminAuth\RegisterController@register');
+
+Route::get('/admin_home',function (){
+   return view('admin.home');
+});

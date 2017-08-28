@@ -16,6 +16,8 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
+    protected $redirectTo = '/admin_home';
+
     /**
      * @return mixed
      * Custom Guard For Admin
@@ -23,5 +25,13 @@ class LoginController extends Controller
     protected function guard()
     {
         return Auth::guard('web_admin');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showLoginForm()
+    {
+        return view('admin.auth.login');
     }
 }

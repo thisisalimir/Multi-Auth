@@ -25,6 +25,12 @@ Route::group(['middleware' => ['admin_guest']], function () {
     //Login
     Route::get('admin_login', 'AdminAuth\LoginController@showLoginForm');
     Route::post('admin_login', 'AdminAuth\LoginController@login');
+    //Password Reset
+    Route::get('admin_password/reset', 'AdminAuth\ForgetPasswordController@showLinkRequestForm');
+    Route::post('admin_password/email', 'AdminAuth\ForgetPasswordController@sendResetLinkEmail');
+    Route::get('admin_password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
+    Route::post('admin_password/reset', 'AdminAuth\ResetPasswordController@reset');
+
 });
 
 Route::group(['middleware' => ['admin_auth']], function () {

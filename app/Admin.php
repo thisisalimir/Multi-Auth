@@ -3,7 +3,9 @@
 namespace App;
 
 //Reason we use is our custom guard need to be instance Authentication
+use App\Notifications\AdminResetPasswordNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class Admin
@@ -11,10 +13,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class Admin extends Authenticatable
 {
-    /**
-     * @var string
-     */
-    protected $table = 'admins';
+
+    //Trait has notify() method defined
+    use Notifiable;
 
     /**
      * @var array
@@ -30,4 +31,12 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token'
     ];
+
+    /**
+     * @param string $token
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new AdminResetPasswordNotification($token));
+    }
 }
